@@ -38,6 +38,16 @@ public class Proyecto implements Serializable {
 		this.evento = evento;
 	}
 	
+	public Proyecto(int id,String nombre, String resumen, String video, Tipo tipo, Categoria cat, Asignatura asig) {
+		this.id = id;
+		this.nombre = nombre;
+		this.resumen = resumen;
+		this.video = video;
+		this.tipo = tipo;
+		this.cat = cat;
+		this.asig = asig;
+	}
+	
 	public int getId() {
 		return id;
 	}

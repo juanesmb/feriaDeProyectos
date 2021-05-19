@@ -1,6 +1,7 @@
 package co.feriaDeProyectos.controller;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 import java.sql.SQLException;
 
 import co.feriaDeProyectos.dao.AlumnoDaoMySQL;
@@ -51,20 +52,22 @@ public class Test extends HttpServlet {
     	Tipo tipo = new Tipo(1,"proyecto de aula");
     	Categoria cat = new Categoria(4,"investigacion");
     	Asignatura asig = new Asignatura("1155605","Base de datos");
-    	Date date = new Date(2021,5,18);
-    	System.out.println("fecha: anio:" + date.getYear() + " mes:" + date.getMonth() + " dia:" + date.getDay());
-    	Evento evento = new Evento(5,"Feria sape",date);
+    	LocalDate date1 = LocalDate.of(2021, 4, 25);
+    	//System.out.println(date1.toEpochDay());
+    	java.sql.Date date = new java.sql.Date(date1.toEpochDay()*24*60*60*1000);
+    	
+    	Evento evento = new Evento("Feria sape",date);
     	Proyecto p = new Proyecto(nombre,resumen,video,tipo,cat,asig,evento);
     	Proyecto p2 = new Proyecto(2,"testNuevo","He bought?",video,tipo,cat,asig,evento);
     	
     	Alumno a = new Alumno("1151858","monk","juanesmoncada@gmail.com","123");
     	
     	try {
-    		//eventoDao.insert(evento); //date mal ingresada
-			proyectoDao.insert(p); 
-			alumnoDao.insert(a);
-			participa.insert(a, p);
-			proyectoDao.update(p2);
+    		eventoDao.insert(evento); //date mal ingresada
+			//proyectoDao.insert(p); 
+			//alumnoDao.insert(a);
+			//participa.insert(a, p);
+			//proyectoDao.update(p2);
 			System.out.print("datos subidos");
 		} catch (SQLException e) {
 			e.printStackTrace();
